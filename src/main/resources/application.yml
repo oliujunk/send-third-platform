@@ -1,0 +1,10 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: none
+
+logging:
+  file:
+    max-history: 30
+    max-size: 50MB
+    path: logs
