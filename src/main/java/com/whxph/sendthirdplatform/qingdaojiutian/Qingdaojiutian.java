@@ -32,7 +32,8 @@ public class Qingdaojiutian {
 
     private String username = "test";
 
-    private String pk = "4fcf1483a4fa4cd0869921668caab37a";
+//    private String pk = "4fcf1483a4fa4cd0869921668caab37a";
+    private String pk = "75b644204a06489ab8a83091c2137456";
 
     @Resource
     private MqttGateway mqttGateway;
@@ -45,7 +46,7 @@ public class Qingdaojiutian {
         if (start) {
             token = Xphapi.updateToken(restTemplate);
 //            deviceSet = Xphapi.updateDevice(restTemplate, username, token);
-            deviceSet.add(16065536);
+            deviceSet.add(16064260);
         }
     }
 
@@ -66,14 +67,22 @@ public class Qingdaojiutian {
                 JSONObject params = new JSONObject();
                 params.put("status", 1);
                 JSONObject data = new JSONObject();
-                data.put("04003", entity.getJSONObject(3).getString("eValue"));
-                data.put("04004", entity.getJSONObject(4).getString("eValue"));
-                data.put("04005", entity.getJSONObject(0).getString("eValue"));
-                data.put("04006", entity.getJSONObject(1).getString("eValue"));
-                data.put("04007", entity.getJSONObject(2).getString("eValue"));
-                data.put("04012", entity.getJSONObject(5).getString("eValue"));
-                data.put("04010", entity.getJSONObject(6).getString("eValue"));
-                data.put("04011", entity.getJSONObject(7).getString("eValue"));
+//                data.put("04003", entity.getJSONObject(3).getString("eValue"));
+//                data.put("04004", entity.getJSONObject(4).getString("eValue"));
+//                data.put("04005", entity.getJSONObject(0).getString("eValue"));
+//                data.put("04006", entity.getJSONObject(1).getString("eValue"));
+//                data.put("04007", entity.getJSONObject(2).getString("eValue"));
+//                data.put("04012", entity.getJSONObject(5).getString("eValue"));
+//                data.put("04010", entity.getJSONObject(6).getString("eValue"));
+//                data.put("04011", entity.getJSONObject(7).getString("eValue"));
+                data.put("04014", entity.getJSONObject(0).getString("eValue"));
+                data.put("04015", entity.getJSONObject(1).getString("eValue"));
+                data.put("04017", entity.getJSONObject(2).getString("eValue"));
+                data.put("04029", entity.getJSONObject(3).getString("eValue"));
+                data.put("04028", entity.getJSONObject(4).getString("eValue"));
+                data.put("04016", entity.getJSONObject(5).getString("eValue"));
+                data.put("04027", entity.getJSONObject(6).getString("eValue"));
+                data.put("04030", entity.getJSONObject(7).getString("eValue"));
                 params.put("data", data);
                 sendData.put("params", params);
                 sendData.put("version", "1.0");
@@ -88,7 +97,7 @@ public class Qingdaojiutian {
         start = true;
         token = Xphapi.updateToken(restTemplate);
 //        deviceSet = Xphapi.updateDevice(restTemplate, username, token);
-        deviceSet.add(16065536);
+        deviceSet.add(16064260);
     }
 
 }

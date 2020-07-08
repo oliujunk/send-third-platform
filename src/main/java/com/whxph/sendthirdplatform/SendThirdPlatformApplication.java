@@ -1,11 +1,12 @@
 package com.whxph.sendthirdplatform;
 
+import com.whxph.sendthirdplatform.changzhi.Changzhi;
 import com.whxph.sendthirdplatform.henan.*;
 import com.whxph.sendthirdplatform.jinanjiaotongwei.JinanJiaotongwei;
-import com.whxph.sendthirdplatform.qingdaojiutian.Qingdaojiutian;
-import com.whxph.sendthirdplatform.qingdaozhongfu.Qingdaozhongfu;
 import javax.annotation.Resource;
 
+import com.whxph.sendthirdplatform.qingdaojiutian.Qingdaojiutian;
+import com.whxph.sendthirdplatform.zhonghuanongye.Zhonghuanongye;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,40 +24,16 @@ public class SendThirdPlatformApplication implements ApplicationRunner {
     private JinanJiaotongwei jinanJiaotongwei;
 
     @Resource
-    private Qingdaojiutian qingdaojiutian;
+    private Changzhi changzhi;
 
     @Resource
-    private Qingdaozhongfu qingdaozhongfu;
+    private Qingdaojiutian qingdaojiutian;
 
     @Resource
     private UpdateStandrdData updateStandrdData;
 
     @Resource
-    private Guokong guokong;
-
-    @Resource
-    private Gkgridding gkgridding;
-
-    @Resource
-    private Hnhebi hnhebi;
-
-    @Resource
-    private Kaifeng kaifeng;
-
-    @Resource
-    private Nanyang nanyang;
-
-    @Resource
-    private Pingdingshan pingdingshan;
-
-    @Resource
-    private Nanyang2019 nanyang2019;
-
-    @Resource
-    private Zhumadian zhumadian;
-
-    @Resource
-    private Zhatucang zhatucang;
+    private Zhonghuanongye zhonghuanongye;
 
     public static void main(String[] args) {
         SpringApplication.run(SendThirdPlatformApplication.class, args);
@@ -68,17 +45,8 @@ public class SendThirdPlatformApplication implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         updateStandrdData.updateStandrdData();
         jinanJiaotongwei.start();
+        changzhi.start();
         qingdaojiutian.start();
-        qingdaozhongfu.start();
-
-        guokong.start();
-        gkgridding.start();
-        hnhebi.start();
-        kaifeng.start();
-        nanyang.start();
-        nanyang2019.start();
-        pingdingshan.start();
-        zhumadian.start();
-        zhatucang.start();
+        zhonghuanongye.start();
     }
 }

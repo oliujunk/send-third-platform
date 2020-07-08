@@ -46,7 +46,7 @@ public class Qingdaozhongfu {
     private String token = "";
 
     @SuppressWarnings("FieldCanBeLocal")
-    private String username = "1543146";
+    private final String username = "1543146";
 
     @Resource
     private RestTemplate restTemplate;
