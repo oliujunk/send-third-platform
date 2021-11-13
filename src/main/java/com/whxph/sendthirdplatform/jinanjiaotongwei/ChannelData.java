@@ -14,11 +14,13 @@ class ChannelData {
     private Channel channel;
     private Short serialNumber;
     private boolean online;
+    private String deviceName;
 
-    ChannelData(Integer deviceId, Channel channel, Short serialNumber, boolean online) {
+    ChannelData(Integer deviceId, Channel channel, Short serialNumber, boolean online, String deviceName) {
         this.deviceId = deviceId;
         this.channel = channel;
         this.serialNumber = serialNumber;
         this.online = online;
+        this.deviceName = deviceName;
     }
 }

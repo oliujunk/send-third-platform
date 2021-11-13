@@ -3,6 +3,24 @@ spring:
     allow-bean-definition-overriding: true
     web-application-type: none
 
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://182.106.184.185:61616
+    pool:
+      enabled: true
+      max-connections: 20
+
+  kafka:
+    producer:
+      bootstrap-servers: 39.108.123.235:29092
+      properties:
+        sasl.mechanism: SCRAM-SHA-256
+        security.protocol: SASL_PLAINTEXT
+        sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="alice" password="Alice-Secret8192";
+    jaas:
+      enabled: true
+
 logging:
   file:
     max-history: 30

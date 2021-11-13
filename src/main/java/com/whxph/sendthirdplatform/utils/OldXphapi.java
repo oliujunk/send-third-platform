@@ -24,7 +24,7 @@ public class OldXphapi {
         authData.put("username", "junge2018");
         authData.put("password", "123456");
         JSONObject data = restTemplate.postForObject("http://115.28.187.9:8005/login",
-            authData, JSONObject.class);
+                authData, JSONObject.class);
         assert data != null;
         return data.getString("token");
     }
@@ -35,11 +35,26 @@ public class OldXphapi {
         headers.add("token", token);
         HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
         ResponseEntity<JSONObject> resEntity = restTemplate.exchange(
-            String.format("http://115.28.187.9:8005/user/%s", username),
-            HttpMethod.GET, requestEntity, JSONObject.class);
+                String.format("http://115.28.187.9:8005/user/%s", username),
+                HttpMethod.GET, requestEntity, JSONObject.class);
         JSONArray devices = Objects.requireNonNull(resEntity.getBody()).getJSONArray("devices");
         for (int i = 0; i < devices.size(); i++) {
             deviceSet.add(devices.getJSONObject(i).getInteger("facId"));
+        }
+        return deviceSet;
+    }
+
+    public static Set<JSONObject> updateDevice1(RestTemplate restTemplate, String username, String token) {
+        Set<JSONObject> deviceSet = new HashSet<>();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("token", token);
+        HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
+        ResponseEntity<JSONObject> resEntity = restTemplate.exchange(
+                String.format("http://115.28.187.9:8005/user/%s", username),
+                HttpMethod.GET, requestEntity, JSONObject.class);
+        JSONArray devices = Objects.requireNonNull(resEntity.getBody()).getJSONArray("devices");
+        for (int i = 0; i < devices.size(); i++) {
+            deviceSet.add(devices.getJSONObject(i));
         }
         return deviceSet;
     }
